@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+import { faSpaceAwesome } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+config.autoAddCss = false;
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +32,17 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <div className="flex flex-col w-full bg-gray-800 h-screen">
+          <div className="h-1/6 bg-black flex w-full justify-center items-center">
+            <FontAwesomeIcon
+              icon={faSpaceAwesome}
+              className="text-3xl mr-2 text-blue-400"
+            />
+            <h1 className="text-3xl mr-2 text-blue-400 font-black">Todo</h1>
+            <h1 className="text-3xl text-purple-400 font-black">App</h1>
+          </div>
+          {children}
+        </div>
       </body>
     </html>
   );
