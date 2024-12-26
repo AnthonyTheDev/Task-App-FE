@@ -3,5 +3,5 @@ export type Task = {
   title: string;
   color: string;
   is_Completed: boolean;
-  completed_Dated?: string;
+  completed_Dated?: string | null;
 };

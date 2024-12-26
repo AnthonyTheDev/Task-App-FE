@@ -7,8 +7,8 @@ import ROUTES from "@/routes/routes";
 
 interface IProps {
   task: Task;
-  deleteTask: Function;
-  completeTask: Function;
+  deleteTask: (id: number) => void;
+  completeTask: (payload: Task) => void;
 }
 
 const TaskCard: React.FC<IProps> = ({ task, deleteTask, completeTask }) => {

@@ -6,11 +6,11 @@ import API_ROUTES from "@/constants/api";
 
 type Props = {
   taskList: Task[];
-  updateTaskList: Function;
+  updateTaskList: (data: Task[]) => void;
 };
 
 const TaskCards: React.FC<Props> = ({ taskList, updateTaskList }) => {
-  const handleDeleteTask = async (id: Number) => {
+  const handleDeleteTask = async (id: number) => {
     try {
       await fetch(`${API_ROUTES.TASKS}/${id}`, {
         method: "DELETE",

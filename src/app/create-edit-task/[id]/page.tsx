@@ -9,26 +9,34 @@ export async function generateStaticParams() {
     }));
   } catch (error) {
     console.error(error);
+    return [];
   }
 }
 
 const findTaskByID = async (id: string) => {
   try {
     const response = await fetch(`${API_ROUTES.TASKS}/${id}`);
+    if (!response.ok) throw new Error("Failed to fetch task");
     return response.json();
   } catch (error) {
     console.error(error);
+    throw error;
   }
 };
 
-const EditTask = async ({ params }: { params: { id: string } }) => {
-  const { id } = params;
+type PageProps = {
+  params: Promise<{ id: string }>;
+};
 
+const EditTask = async ({ params }: PageProps) => {
   try {
+    const resolvedParams = await params;
+    const { id } = resolvedParams;
+
     const task = await findTaskByID(id);
     return <TaskForm task={task} />;
   } catch (error) {
-    console.error(error);
+    console.error("Error loading task:", error);
     return <div>Error loading task</div>;
   }
 };
