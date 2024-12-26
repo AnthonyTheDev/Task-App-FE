@@ -1,7 +1,6 @@
 import { TaskHome } from "@/components/TaskHome";
 import { Task } from "./types/taskType";
 import API_ROUTES from "@/constants/api";
-import { ReactElement } from "react";
 
 export default async function Home() {
   const allTask = await getAllTask();
@@ -18,8 +17,8 @@ async function getAllTask(): Promise<Task[] | null> {
     const res = await fetch(API_ROUTES.TASKS);
     const data = await res.json();
     return data;
-  } catch (error: any) {
-    console.error("Error fetching tasks");
+  } catch (error) {
+    console.error(error);
     return null;
   }
 }

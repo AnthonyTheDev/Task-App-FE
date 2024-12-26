@@ -8,7 +8,7 @@ export async function generateStaticParams() {
       id: String(task.id),
     }));
   } catch (error) {
-    throw new Error(`Failed to fetch tasks`);
+    console.error(error);
   }
 }
 
@@ -17,7 +17,7 @@ const findTaskByID = async (id: string) => {
     const response = await fetch(`${API_ROUTES.TASKS}/${id}`);
     return response.json();
   } catch (error) {
-    throw new Error(`Failed to fetch task with ID ${id}`);
+    console.error(error);
   }
 };
 
@@ -28,7 +28,7 @@ const EditTask = async ({ params }: { params: { id: string } }) => {
     const task = await findTaskByID(id);
     return <TaskForm task={task} />;
   } catch (error) {
-    console.error(`Error fetching task with ${id}`);
+    console.error(error);
     return <div>Error loading task</div>;
   }
 };

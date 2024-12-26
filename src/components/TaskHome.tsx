@@ -56,7 +56,7 @@ export const TaskHome: React.FC<IProps> = ({ allTask }) => {
               className="text-8xl mb-3 text-gray-600"
             />
             <p className="font-bold mb-3 text-gray-600">
-              You don't have any tasks registered yet
+              You dont have any tasks registered yet
             </p>
             <p className="mb-3 text-gray-600">
               Create tasks and organize your to-do items
